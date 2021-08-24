@@ -1,0 +1,32 @@
+{
+    "Serilog": {
+      "Using": [
+        "Serilog.Sinks.Console"
+      ],
+  
+      "MinimumLevel": {
+        "Default": "Information",
+        "Override": {
+          "Microsoft": "Information",
+          "Microsoft.AspNetCore": "Warning",
+          "Quartz": "Warning",
+          "Microsoft.EntityFrameworkCore.Infrastructure": "Warning",
+          "Microsoft.EntityFrameworkCore.Database.Command": "Warning",
+          "Microsoft.EntityFrameworkCore.Model.Validation": "Error"
+        }
+      },
+      "WriteTo": [
+        {
+          "Name": "Console",
+          "Args": {
+            "outputTemplate": "{Timestamp:yyyy-dd-MM HH:mm:ss} [{Level:u3}] {Message:j}{Properties:j}{NewLine}{Exception}"
+          }
+        }
+      ],
+      "Enrich": [
+        "FromLogContext",
+        "WithMachineName",
+        "WithThreadId"
+      ]
+    }
+  }

@@ -1,0 +1,3 @@
+FROM acrazewvvlitiot.azurecr.io/wnt_influx:release_4.0.0 AS base
+
+#ENTRYPOINT ["./entrypoint.sh"]
