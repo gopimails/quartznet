@@ -44,6 +44,6 @@ ENTRYPOINT ["dotnet", "quartznet.dll"]
 - `docker create --name qbox quartznetleak` which will create a container named qbox.
 - `docker start qbox` will start the container
 - `docker logs -f qbox` to see live logs
-- More reading [here](/dotnet/core/docker/build-container?tabs=linux).
+- More reading [here](https://docs.microsoft.com/en-us/dotnet/core/docker/build-container?tabs=linux).
 ## Memory leak check
-- We update the docker file to have a 
+- 
