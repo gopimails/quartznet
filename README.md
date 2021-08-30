@@ -46,4 +46,5 @@ ENTRYPOINT ["dotnet", "quartznet.dll"]
 - `docker logs -f qbox` to see live logs
 - More reading [here](https://docs.microsoft.com/en-us/dotnet/core/docker/build-container?tabs=linux).
 ## Memory leak check
-- 
+- Run and remove container after execution. `docker run --rm -d  --memory="32m" quartznetleak:latest`
+- Run interactive and remove container after execution. ` docker run --rm -it --memory="32m" quartznetleak:latest`

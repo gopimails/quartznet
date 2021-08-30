@@ -24,7 +24,7 @@ namespace quartznet.jobs
             _logger.LogInformation("{Job} Started", nameof(JobG));
             try
             {
-                createLeakList.Add(new byte[1024]);
+                createLeakList.Add(new byte[1000000]);
                 await Task.Delay(TimeSpan.FromMilliseconds(new Random().Next(1, 500)), context.CancellationToken);
             }
             catch (Exception ex)

@@ -44,20 +44,20 @@ namespace quartznet
                                 services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobA), cronExpression: "0 0/1 * * * ?")); // run every min
                                 services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobB), cronExpression: "0 0/1 * * * ?")); // run every min
                                 services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobC), cronExpression: "0 0/1 * * * ?")); // run every min
-                                services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobD), cronExpression: "0 0/2 * * * ?")); // run every 2 min
+                                services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobD), cronExpression: "0 0/1 * * * ?")); // run every min
                                 services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobE), cronExpression: "0 0/2 * * * ?")); // run every 2 mins
-                                services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobF), cronExpression: "0 0/3 * * * ?")); // run every 3 mins
-                                services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobG), cronExpression: "0 0/1 * * * ?")); // run every min
-                                services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobH), cronExpression: "0 0/2 * * * ?")); // run every 2 min                  
+                                services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobF), cronExpression: "0 0/2 * * * ?")); // run every 2 mins
+                                services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobG), cronExpression: "0 0/2 * * * ?")); // run every 2 mins
+                                services.AddSingleton(new SharedJobSchedule(jobType: typeof(JobH), cronExpression: "0 0/2 * * * ?")); // run every 2 mins                  
 
-                                services.AddTransient<JobA>();
-                                services.AddTransient<JobB>();
-                                services.AddTransient<JobC>();
-                                services.AddTransient<JobD>();
-                                services.AddTransient<JobE>();
-                                services.AddTransient<JobF>();
-                                services.AddTransient<JobG>();
-                                services.AddTransient<JobH>();
+                                services.AddScoped<JobA>();
+                                services.AddScoped<JobB>();
+                                services.AddScoped<JobC>();
+                                services.AddScoped<JobD>();
+                                services.AddScoped<JobE>();
+                                services.AddScoped<JobF>();
+                                services.AddScoped<JobG>();
+                                services.AddScoped<JobH>();
                             })
                             .UseSerilog()
                             .UseConsoleLifetime()

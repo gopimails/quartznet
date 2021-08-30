@@ -26,6 +26,7 @@ namespace quartznet
         }
     }
 
+    [DisallowConcurrentExecution]
     public class SharedJobRunner : IJob
     {
         private readonly IServiceProvider _serviceProvider;
@@ -36,13 +37,21 @@ namespace quartznet
 
         public async Task Execute(IJobExecutionContext context)
         {
-            using(var scope = _serviceProvider.CreateScope())
+            // var job = _serviceProvider.GetRequiredService(context.JobDetail.JobType) as IJob;
+            // await job.Execute(context);
+            int gcIdentifier;
+            using (var scope = _serviceProvider.CreateScope())
             {
                 var jobType = context.JobDetail.JobType;
                 var job = scope.ServiceProvider.GetRequiredService(jobType) as IJob;
-
+                gcIdentifier = GC.GetGeneration(job);
+                Serilog.Log.Information("gc id {id}", gcIdentifier);
                 await job.Execute(context);
+                Serilog.Log.Information("Exec done");
+                // job.Execute(context).Wait();
             }
+            GC.Collect(gcIdentifier, GCCollectionMode.Forced);
+            Serilog.Log.Information("GC done");
         }
     }
 
